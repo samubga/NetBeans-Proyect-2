@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayuda - Operaciones CRUD y Búsqueda de Proveedores</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+        }
+        p {
+            line-height: 1.6;
+        }
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        ol {
+            list-style-type: decimal;
+            padding-left: 20px;
+        }
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #f4f4f4;
+            padding: 2px 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .subsection {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ayuda - Operaciones CRUD y Búsqueda de Proveedores</h1>
+
+    <div class="section">
+    <h2>Operaciones CRUD</h2>
+    <p>Las operaciones CRUD (Crear, Leer, Actualizar, Eliminar) son funciones básicas que se utilizan para gestionar datos en una tabla de proveedores:</p>
+    <ul>
+        <li>
+            <p><strong>Crear:</strong> Permite agregar un nuevo proveedor a la tabla.</p>
+            <ol>
+                <li> Vamos al menu "Acciones -> Proveedores -> Añadir"</li>
+                <li> Rellenamos los campos obligatorios (Los que están en rojo)</li>
+                <li> Para elegir un municipio, primero tendremos que seleccionar una provincia </li>
+                <li> Le damos al botón "Añadir Proveedor"</li>
+                <li> Con el botón "Reinciar", se limpian los datos del formulario"</li>
+                
+            </ol>
+        </li>
+        <li>
+            <p><strong>Actualizar:</strong> Permite modificar la información de un proveedor existente.</p>
+            <ol>
+                <li> Vamos al menu "Acciones -> Proveedores -> Buscar/filtrar"</li>
+                <li> En la tabla, le damos al botón de modificar de la fila del proveedor que queremos editar </li>
+                <li> Nos mostrará los campos del formulario rellenados con la información del proveedor </li>
+                <li> Cambiamos el dato que necesitemos, y le damos a "Modificar proveedor"</li>
+                <li> Con el botón "Cancelar", se cancela la operación de editar"</li>
+            </ol>
+        </li>
+        <li>
+            <p><strong>Eliminar:</strong> Permite eliminar un proveedor de la tabla.</p>
+            <ol>
+                <li>Vamos al menu "Acciones -> Proveedores -> Buscar/filtrar" </li>
+                <li>En la tabla, le damos al botón de eliminar de la fila del proveedor que queremos borrar</li>
+                <li>Nos pedirá una confirmación para asegurar la eliminación del proveedor </li>
+            </ol>
+        </li>
+    </ul>
+</div>
+
+    <div class="section">
+        <h2>Búsqueda de Proveedores</h2>
+        <p>La búsqueda de proveedores se efectuará al seleccionar un elemento de las listas. Permite encontrar proveedores específicos en la tabla utilizando criterios de búsqueda:</p>
+        <ul>
+            <li><strong>Búsqueda por País:</strong> Busca proveedores por su país.</li>
+            <li><strong>Búsqueda por Municipio</strong> Busca proveedores por su municipio. Cuando seleccionemos una provincia, se cargará una lista con los municipios de la provincia en los que hay un proveedor disponible </li>
+        </ul>
+    </div>
+</body>
+</html>

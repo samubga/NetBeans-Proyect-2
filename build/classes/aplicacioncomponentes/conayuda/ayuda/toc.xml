@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<toc version="1.0">
+ <tocitem text="Inicio" target="primero">
+ <tocitem text="Acerca de" target="acecaDe" />
+ <tocitem text="Proveedores" target="proveedores" />
+ <tocitem text="Generación de informes" target="informes" />
+ </tocitem>
+</toc>

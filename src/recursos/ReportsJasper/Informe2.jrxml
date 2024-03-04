@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.2.final using JasperReports Library version 6.21.2-8434a0bd7c3bbc37cbf916f2968d35e4b165821a  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Cherry" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="13acf49e-4913-4d1b-bccc-113817ad15d1">
+	<property name="com.jaspersoft.studio.data.sql.tables">
+		<![CDATA[IkNBVEVHT1JJQVMiICwxNTUsMjYxLGMxNTFkZjc5LWY5ZDQtNDM0ZC04ZTNlLWVhNWZkNmRiYTQy
+NjsiUFJPRFVDVE9TIiAsMTUsNzMsMDAzYTJiNDQtNjRkZi00ZWE0LTliMjctZmQ0NjNlNzdlYWE2
+OyJQQUlTRVMiICwzMjcsMTc3LGM0ZmY2Njk2LTFmZmYtNDcxMy05NDI3LThlYzI2MDJlNTQwZTsi
+UFJPVkVFRE9SRVMiICwxNTUsMTUsNDAxMjJhNjEtZGUzMy00MWYyLWFjMmQtOWY0MDA0YzliZWQ0
+Ow==]]>
+	</property>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="HSQLDB"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="codProv" class="java.lang.Integer"/>
+	<parameter name="codCategoria" class="java.lang.Integer"/>
+	<parameter name="codPais" class="java.lang.Integer"/>
+	<parameter name="imagenf" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT "CATEGORIAS"."NOMBRE" AS categoria,
+	"PAISES"."NOMBRE" AS pais,
+	"PROVEEDORES"."NOMBRE" AS proveedor,
+	"PRODUCTOS"."NOMBRE" AS producto,
+	"PRODUCTOS"."PRECIOUNI",
+	"PRODUCTOS"."UNIDEXIST"
+FROM "PRODUCTOS"
+	JOIN "PROVEEDORES" ON 
+	 "PRODUCTOS"."CODPROV" = "PROVEEDORES"."CODIGO" 
+	JOIN "CATEGORIAS" ON 
+	 "PRODUCTOS"."CODCATEG" = "CATEGORIAS"."CODIGO" 
+	JOIN "PAISES" ON 
+	 "PROVEEDORES"."CODIGOPAIS" = "PAISES"."CODIGO" 
+WHERE 
+	  ( 
+	 $P{codProv} IS NULL  
+	 OR "PROVEEDORES"."CODIGO" = $P{codProv}) 
+	 AND ( 
+	 $P{codCategoria} IS NULL  
+	 OR "CATEGORIAS"."CODIGO" = $P{codCategoria}) 
+	 AND ( 
+	 $P{codPais} IS NULL  
+	 OR "PAISES"."CODIGO" = $P{codPais})]]>
+	</queryString>
+	<field name="CATEGORIA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="NOMBRE"/>
+		<property name="com.jaspersoft.studio.field.label" value="CATEGORIA"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="CATEGORIAS"/>
+	</field>
+	<field name="PAIS" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="NOMBRE"/>
+		<property name="com.jaspersoft.studio.field.label" value="PAIS"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="PAISES"/>
+	</field>
+	<field name="PROVEEDOR" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="NOMBRE"/>
+		<property name="com.jaspersoft.studio.field.label" value="PROVEEDOR"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="PROVEEDORES"/>
+	</field>
+	<field name="PRODUCTO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="NOMBRE"/>
+		<property name="com.jaspersoft.studio.field.label" value="PRODUCTO"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="PRODUCTOS"/>
+	</field>
+	<field name="PRECIOUNI" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="PRECIOUNI"/>
+		<property name="com.jaspersoft.studio.field.label" value="PRECIOUNI"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="PRODUCTOS"/>
+	</field>
+	<field name="UNIDEXIST" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="UNIDEXIST"/>
+		<property name="com.jaspersoft.studio.field.label" value="UNIDEXIST"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="PRODUCTOS"/>
+	</field>
+	<background>
+		<band height="42" splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="132" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="95" backcolor="#000000" uuid="6c6ca4e1-17cd-4913-93d6-5e670ea9ae8a"/>
+				<staticText>
+					<reportElement style="Title" x="10" y="0" width="370" height="66" uuid="a2a2cac8-5a7d-4487-8c54-dab235ce4e21"/>
+					<textElement>
+						<font isBold="false"/>
+					</textElement>
+					<text><![CDATA[Productos]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="SubTitle" x="10" y="61" width="249" height="29" uuid="8978eac3-c578-41c9-837e-48d2b0184642"/>
+					<textElement>
+						<font size="22" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Informe general]]></text>
+				</staticText>
+				<image>
+					<reportElement key="imagen" x="460" y="10" width="93" height="80" uuid="f09dac6b-e58e-45cb-812d-fbb5f8db075c"/>
+					<imageExpression><![CDATA[$P{imagenf}]]></imageExpression>
+				</image>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="100" width="555" height="32" forecolor="#000000" backcolor="#7E93BD" uuid="e3c14156-5b51-4201-918b-97fdc012e5d4"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="409" y="10" width="144" height="20" forecolor="#FFFFFF" uuid="5c3301e7-a737-4c59-8a2f-a6c79fd1adb8"/>
+					<textElement textAlignment="Right">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="50" splitType="Stretch">
+			<staticText>
+				<reportElement x="2" y="16" width="78" height="26" uuid="cb89b8ca-ff1b-41e3-b1c7-0dff78da15c7"/>
+				<textElement>
+					<font fontName="Segoe UI Black" size="16" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Producto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="16" width="78" height="26" uuid="64661712-9561-4f72-9435-5bc35ef85ea8"/>
+				<textElement>
+					<font fontName="Segoe UI Black" size="16" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Categoria]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="190" y="16" width="90" height="26" uuid="1e2cedf9-3a70-478e-88ae-f4253a2ee940"/>
+				<textElement>
+					<font fontName="Segoe UI Black" size="16" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Proveedor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="16" width="40" height="26" uuid="59fbf003-519e-4035-bc74-d6f24fbc235c"/>
+				<textElement>
+					<font fontName="Segoe UI Black" size="16" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Uni]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="359" y="16" width="40" height="26" uuid="44225a66-ff54-471d-9e93-045bd27ed2ce"/>
+				<textElement>
+					<font fontName="Segoe UI Black" size="16" isBold="false"/>
+				</textElement>
+				<text><![CDATA[País]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="431" y="16" width="64" height="26" uuid="c00b2d7b-8131-4f53-8475-8d3b7be0f24d"/>
+				<textElement>
+					<font fontName="Segoe UI Black" size="16" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Precio]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="29" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="20" width="555" height="3" backcolor="#ABC5D1" uuid="b50221b5-8254-440b-8c6f-1f0b138c9259">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</frame>
+			<textField>
+				<reportElement x="100" y="0" width="80" height="19" uuid="2814c779-5129-4c87-9511-a17fab6eff8e"/>
+				<textFieldExpression><![CDATA[$F{CATEGORIA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="88" height="20" uuid="33637852-d74e-4e40-bdb0-25f24a0984e7"/>
+				<textFieldExpression><![CDATA[$F{PRODUCTO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="190" y="0" width="100" height="19" uuid="e3d657f4-4a8b-4341-a762-3ba88aa889dc"/>
+				<textFieldExpression><![CDATA[$F{PROVEEDOR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="0" width="40" height="19" uuid="c948d2bc-3f13-4d1c-9409-7019e1b87812"/>
+				<textFieldExpression><![CDATA[$F{UNIDEXIST}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="360" y="0" width="61" height="19" uuid="d83be1e7-0745-4ab1-b795-eb2a841b6839"/>
+				<textFieldExpression><![CDATA[$F{PAIS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="433" y="0" width="61" height="19" uuid="3bd53c0b-9575-4cf6-a5a0-3ca57fd2fee7"/>
+				<textFieldExpression><![CDATA[$F{PRECIOUNI}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="1133a906-5b71-476e-9f3e-bc97c97058c1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="59" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="1" width="555" height="24" forecolor="#D0B48E" backcolor="#000000" uuid="729c3539-f946-4d0e-a0a7-bda2815ea1b0"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="513" y="0" width="40" height="20" forecolor="#FFFFFF" uuid="4834e99c-7f6c-485a-b098-50e5187f2ab4"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="433" y="0" width="80" height="20" forecolor="#FFFFFF" uuid="9825b46e-76f1-469a-abb8-a1cc27aad685"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="1" width="197" height="20" forecolor="#FFFFFF" uuid="137d38c7-1a83-4fc5-b156-9d5f1b1a0ddc"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="402" splitType="Stretch">
+			<barChart>
+				<chart evaluationTime="Report" renderType="draw" theme="aegean">
+					<reportElement stretchType="ContainerHeight" x="0" y="0" width="544" height="380" uuid="66951d1b-9c8e-4161-b97a-a848a47f019f"/>
+					<box leftPadding="0">
+						<pen lineWidth="0.0"/>
+					</box>
+					<chartTitle position="Top">
+						<titleExpression><![CDATA["Unidades de producto por categorias"]]></titleExpression>
+					</chartTitle>
+					<chartSubtitle/>
+					<chartLegend position="Bottom"/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA[$F{PRODUCTO}]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{CATEGORIA}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{UNIDEXIST}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<barPlot>
+					<plot labelRotation="90.0"/>
+					<itemLabel/>
+					<categoryAxisFormat labelRotation="90.0">
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" tickLabelMask="" axisLineColor="#000000"/>
+					</valueAxisFormat>
+				</barPlot>
+			</barChart>
+		</band>
+	</summary>
+</jasperReport>
